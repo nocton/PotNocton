@@ -1,0 +1,50 @@
+#container{
+    height:100vh;
+    weight:100vh;
+    background:linear-gradient(to top right, white 50%, #2758B9 50%)
+  }
+html{
+    overflow-y:hidden !important;
+  }
+#posicionamento{
+  width:400px;
+  height:500px;
+}
+
+#posi_projetos{
+  margin-right:700px;
+  margin-top:150px;
+  max-width:295px;
+  min-height:400px;
+}
+
+#info{
+  background-color:#151515;
+  border-top-left-radius:48px;
+  border-top-right-radius:48px;
+}
+
+#posi_projan{
+  min-width:300px;
+  min-height:400px;
+}
+
+.pago{
+  -webkit-transition: background-color 0.5s;
+  background-color:rgba(0, 0, 0, 0.4)
+}
+.npago{
+  -webkit-transition: background-color 0.8s;
+  background-color:transparent;
+}
+
+.informar{
+  -webkit-transition: height 0.7s;
+  overflow: hidden;
+  height: 470px;
+}
+.ninformar{
+  transition: height  0.5s;
+  overflow: hidden;
+  height : 0px;
+}

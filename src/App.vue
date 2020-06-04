@@ -1,17 +1,17 @@
 <template>
   <v-app id="app" class="red">
-    <HelloWorld/>
+    <Tela/>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Tela from './pages/Tela';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    Tela,
   },
 };
 </script>

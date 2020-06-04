@@ -6,6 +6,10 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify';
 import VueKonva from 'vue-konva'
 
+import './css/divs.css';
+import './css/componentes.css';
+import './css/sombras.css';
+
 Vue.use(VueKonva)
 
 Vue.config.productionTip = false

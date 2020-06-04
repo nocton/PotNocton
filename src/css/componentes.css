@@ -1,0 +1,70 @@
+#btn{
+    font-size:24px;
+    border-bottom:0px;
+    border-top-left-radius:48px;
+    border-top-right-radius:48px;
+    background-color:#151515;
+    color:white;
+    width:100px;
+    height:75px;
+    font-family: Merriweather;
+}
+#img{
+    -webkit-transform: rotate(-6deg);
+}
+#bolinha{
+    color:white;
+    margin-top:80px;
+    background-color:#151515;
+    width:71px;
+    height:71px;
+    border-radius:50px;
+}
+#bolona{
+    width:280px;
+    height:280px;
+    background-color:#151515;
+    border-radius:200px;
+}
+
+#title{
+    font-family: Fredoka One;
+    font-size:25px;
+    line-height: 20px;
+    height:395px;
+    width:100px;
+}
+
+#projetos{
+    min-height:345px;
+    border-radius:15px;
+    background-color:#EEEEEE;
+}
+
+#projan{
+    margin-top: 130px;
+    min-height:350px;
+    border-radius:15px;
+}
+
+.semprosombra{
+    transition: min-width  0.5s;
+    overflow: hidden;
+    min-width : 300px;
+}
+.comprosombra{
+    transition: min-width  0.7s;
+    overflow: hidden;
+    min-width : 550px;
+}
+
+.comprojan{
+    -webkit-transition: min-width 0.7s;
+    overflow: hidden;
+    min-width: 800px;
+  }
+.semprojan{
+    transition: min-width  0.5s;
+    overflow: hidden;
+    min-width : 300px;
+}

@@ -34,33 +34,114 @@
           <b-button @click="mostrar" >X</b-button>
        </div>
     </div>
-    <div id="posi_projetos" class=" d-flex flex-column justify-end">
-      <div id="title" class=" d-flex justify-top">
+
+  <div id="sombralateral">
+    <v-stage ref="stage" :config="stageSizeSombra">
+        <v-layer>
+          <v-shape :config="{
+          sceneFunc: function(context, shape) {
+            context.beginPath();
+            context.moveTo(80, 0);
+            context.lineTo(0, 60);
+            context.lineTo(80, 100000);
+            context.closePath();
+
+            context.fillStrokeShape(shape);
+          },
+          fill: '#c0c0c0',
+          stroke: '#c0c0c0',
+          strokeWidth: 2
+        }"/>
+      </v-layer>
+    </v-stage>
+  </div>
+  <div>
+    <div id="posi_projetos" class="d-flex flex-column justify-end">
+      <div id="title" class=" d-flex position-fixed">
         <p>Todos</p>
         <p>projetos</p>
       </div>
-      <div id="projetos" v-bind:class="{compro:ver_projetos, sempro:!ver_projetos}" class="position-fixed shadow d-flex justify-center align-center">
-        <b-button @click="ver_projetos=!ver_projetos, show=!show" >
+      <div id="projetos" v-bind:class="{compro:ver_projetos, sempro:!ver_projetos}" class="position-fixed d-flex justify-center align-center">
+        <b-button @click="ajustar" >
           <p v-if="!show" >+</p>
           <p v-if="show" >-</p>
         </b-button>
       </div>
+      <div id="complementosobra" v-bind:class="{comprosombra:ver_projetos, semprosombra:!ver_projetos}">
+      aaa
+      </div>
     </div>
-    <div id="posi_projan" class="d-flex flex-column align-end">
+    <div id="sombrabaixa" v-bind:class="{comprosombra:ver_projetos, semprosombra:!ver_projetos}">
+      <v-stage ref="stage" :config="stageSizeSombraBaixa">
+        <v-layer>
+          <v-shape :config="{
+          sceneFunc: function(context, shape) {
+            context.beginPath();
+            context.moveTo(stageSizeSombraBaixa.width, 0);
+            context.lineTo(0, 200);
+            context.lineTo(0, 0);
+        
+            context.fillStrokeShape(shape);
+          },
+          fill: '#C0C0C0',
+          stroke: '#C0C0C0',
+          strokeWidth: 2
+        }"/>
+      </v-layer>
+    </v-stage>
+    </div>
+  </div>
+  
+    <div id="posi_projan" class=" brown d-flex flex-column align-end">
       <div id="projan" v-bind:class="{comprojan:projan, semprojan:!projan} " class="position-fixed black d-flex justify-center align-center">
         <b-button @click="projan=!projan, show=!show" >
           <p v-if="!show" >+</p>
           <p v-if="show" >-</p>
         </b-button>
       </div>
-      <div id="title" class="d-flex align-end">
-        <p>Em</p>
-        <p>processo</p>
+
+    <div id="sombrabaixadireita" class=" green d-flex align-end">
+        <p class="position-fixed">Em processo</p>
+        <v-stage ref="stage" :config="stageSizeSombraBaixaDireitaCurva">
+          <v-layer>
+            <v-shape :config="{
+            sceneFunc: function(context, shape) {
+              context.beginPath();
+              context.moveTo(0, 0);
+              context.arcTo(0,19,80,10,20);
+
+              context.fillStrokeShape(shape);
+            },
+            fill: '',
+            stroke: '#c0c0c0',
+            strokeWidth: 2
+          }"/>
+        </v-layer>
+      </v-stage>
+        <v-stage ref="stage" :config="stageSizeSombraBaixaDireita">
+          <v-layer>
+            <v-shape :config="{
+            sceneFunc: function(context, shape) {
+              
+              context.beginPath();
+              context.moveTo(0,16);
+              context.lineTo(stageSizeSombraBaixaDireita.width+5, stageSizeSombraBaixaDireita.height+8)
+              context.lineTo(stageSizeSombraBaixaDireita.width, 16)
+              context.moveTo(stageSizeSombraBaixaDireita.width-30, 16);
+              context.arcTo(stageSizeSombraBaixaDireita.width-15,20,stageSizeSombraBaixaDireita.width-12,15,20);
+              context.closePath();
+
+              context.fillStrokeShape(shape);
+            },
+            fill: '#c0c0c0',
+            stroke: '#c0c0c0',
+            strokeWidth: 2
+          }"/>
+        </v-layer>
+      </v-stage>
       </div>
-    </div> 
-  </div>
-
-
+      </div>
+    </div>
   <div class="fixed-bottom d-flex flex-column justify-center align-center">
      <button @click="show=!show, info=!info" id="btn">i</button>
      <div id="info" class="w-75" v-bind:class="{a:info, b:!info}"></div>
@@ -102,13 +183,57 @@ const width = window.innerWidth;
         stageSize: {
           width: width,
           height: 36
-      }
+        },
+        stageSizeSombra:{
+          width: 80,
+          height: 400,
+        },
+        stageSizeSombraDireita:{
+          width: 80,
+          height: 550,
+        },
+        stageSizeSombraBaixa:{
+          width: 300,
+          height: 60,
+        },
+        stageSizeSombraBaixaDireita:{
+          width: 300,
+          height: 160,
+        },
+        stageSizeSombraBaixaDireitaCurva:{
+          width: 15,
+          height: 160,
+        }
       }
     },
     methods:{
       mostrar(){
         this.contato=!this.contato;
         this.show=!this.show;
+      },
+      ajustar(){
+        this.ver_projetos=!this.ver_projetos,
+        this.show=!this.show
+        if(this.ver_projetos){
+          this.stageSizeSombraBaixa.width=550;  
+        }
+        else{
+          setTimeout(()=>{
+            this.stageSizeSombraBaixa.width=500
+          }, 50);
+           setTimeout(()=>{
+            this.stageSizeSombraBaixa.width=450
+          }, 80);
+           setTimeout(()=>{
+            this.stageSizeSombraBaixa.width=400
+          }, 120);
+           setTimeout(()=>{
+            this.stageSizeSombraBaixa.width=350
+          }, 200);
+          setTimeout(()=>{
+            this.stageSizeSombraBaixa.width=300
+          }, 300);
+        }
       }
     }
   }
@@ -130,21 +255,43 @@ overflow-y:hidden !important;
   height:400px;
   width:100px;
 }
+#sombrabaixadireita{
+  margin-top:400px;
+  height:95px;
+  width:300px;
+}
 #posi_projetos{
-  min-width:300px;
-  min-height:400px;
   margin-right:700px;
-  margin-top:100px;
+  margin-top:150px;
+  max-width:295px;
+  min-height:400px;
 }
 #projetos{
   min-height:350px;
   border-radius:15px;
   background-color:#EEEEEE;
 }
+#sombralateral{
+  margin-top:220px;
+  min-width:80px;
+  min-height:400px;
+}
+#sombrabaixa{
+  max-width:300px;
+  min-height:60px;
+}
+#complementosobra{
+  background-color:#C0C0C0;
+  max-height:60px;
+}
+#sombralateraldireita{
+  margin-top:20px;
+  min-width:100px;
+  min-height:500px;
+}
 #posi_projan{
   min-width:300px;
   min-height:400px;
-  margin-bottom:150px;
 }
 #projan{
   min-height:350px;
@@ -205,12 +352,12 @@ overflow-y:hidden !important;
 .compro{
   -webkit-transition: min-width 0.7s;
   overflow: hidden;
-  min-width: 600px;
+  min-width: 560px;
 }
 .sempro{
   transition: min-width  0.5s;
   overflow: hidden;
-  min-width : 300px;
+  min-width : 310px;
 }
 .comprojan{
   -webkit-transition: min-width 0.7s;
@@ -221,5 +368,15 @@ overflow-y:hidden !important;
   transition: min-width  0.5s;
   overflow: hidden;
   min-width : 300px;
+}
+.semprosombra{
+  transition: min-width  0.5s;
+  overflow: hidden;
+  min-width : 300px;
+}
+.comprosombra{
+  transition: min-width  0.7s;
+  overflow: hidden;
+  min-width : 550px;
 }
 </style>
