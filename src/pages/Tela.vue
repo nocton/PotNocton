@@ -34,7 +34,7 @@
             </div>
             <img id="img" height="270" class="position-fixed" src="@/assets/Group 8.png"/>
             <div v-if="contato" id="posicionamento" class=" position-fixed d-flex align-top justify-center">
-                <div id="bolona" class=" position-fixed align-center d-flex justify-center">
+                <div id="bolona" transition="scale-transition" class=" position-fixed align-center d-flex justify-center">
                     <b-button @click="mostrar" >X</b-button>
                 </div>
             </div>
@@ -60,11 +60,27 @@
                 </v-stage>
             </div>
             <div>
-                <div id="posi_projetos" class=" d-flex flex-column justify-end">
-                    <div id="title" class="d-flex font-weight-bold position-fixed">
-                        <p class="fixed" >Todos<br/>projetos.</p>
+                <div id="title" class=" position-fixed">
+                          <v-stage ref="stage" :config="stageSizeTitle">
+                            <v-layer>
+                                <v-shape :config="{
+                                sceneFunc: function(context, shape) {
+
+                                context.font = '25px Ubuntu Mono'; //Define Tamanho e fonte
+                                context.fillStyle = 'black'; //Define a cor
+                                context.fillText('Todos', 5, stageSizeTitle.titlecima);
+                                context.fillText('Projetos.',5, stageSizeTitle.titlebaixo)
+                                context.fillStrokeShape(shape);
+                                },
+                                fill: 'rgb(0,0,0,0.4)',
+                                stroke: '',
+                                strokeWidth: 2
+                            }"/>
+                            </v-layer>
+                        </v-stage>
                     </div>
-                    <div id="projetos" v-bind:class="{compro:ver_projetos, sempro:!ver_projetos}" class="position-fixed d-flex justify-center align-center">
+                <div id="posi_projetos" class=" d-flex flex-column justify-end">
+                    <div id="projetos" v-bind:class="{compro:ver_projetos, sempro:!ver_projetos}" class=" d-flex position-fixed justify-center align-center">
                         <b-button @click="ajustar" >
                         <p v-if="!show" >+</p>
                         <p v-if="show" >-</p>
@@ -101,7 +117,7 @@
                 </b-button>
             </div>
             <div id="complementosombradireita"></div>
-            <div id="sombrabaixadireita" v-bind:class="{comsombra:projan, semsombra:!projan}" class="d-flex align-end">
+            <div id="sombrabaixadireita" v-bind:class="{comsombra:projan, semsombra:!projan}" class=" d-flex align-end">
                 <v-stage ref="stage" :config="stageSizeSombraBaixaDireita">
                 <v-layer>
                     <v-shape :config="{
@@ -112,10 +128,10 @@
                     context.lineTo(stageSizeSombraBaixaDireita.width, 0)
                     context.closePath();
 
-                    context.font = '22px Fredoka One'; //Define Tamanho e fonte
+                    context.font = '24px Ubuntu Mono'; //Define Tamanho e fonte
                     context.fillStyle = 'white'; //Define a cor
                     context.fillText('Em', stageSizeSombraBaixaDireita.titulocima, 15);
-                    context.fillText('Processo.',stageSizeSombraBaixaDireita.titulobaixo,35)
+                    context.fillText('processo.',stageSizeSombraBaixaDireita.titulobaixo,35)
                     context.fillStrokeShape(shape);
                     },
                     fill: 'rgb(0,0,0,0.4)',
@@ -203,8 +219,8 @@ export default{
                 height: 340,
                 mudança:155,
                 inicio:-25,
-                titulocima:260,
-                titulobaixo:215,
+                titulocima:265,
+                titulobaixo:195,
             },
             stageSizeSombraLateralDireita:{
                 width: 50,
@@ -212,6 +228,12 @@ export default{
                 mudançax:50,
                 mudançay:500,
                 mudançaz:480,
+            },
+            stageSizeTitle:{
+                titlecima:122,
+                titlebaixo:142,
+                height:395,
+                width:150
             }
         }
     },
@@ -224,9 +246,31 @@ export default{
         this.ver_projetos=!this.ver_projetos,
         this.show=!this.show
         if(this.ver_projetos){
+
+           setTimeout(()=>{
+            this.stageSizeTitle.titlecima=115;
+            this.stageSizeTitle.titlebaixo=140;
+          },250)
+
+          setTimeout(()=>{
+            this.stageSizeTitle.titlecima=110;
+            this.stageSizeTitle.titlebaixo=135;
+          },300)
+
           this.stageSizeSombraBaixa.width=550;  
         }
-        else{
+        else if(!this.ver_projetos){
+
+          setTimeout(()=>{
+            this.stageSizeTitle.titlecima=115;
+            this.stageSizeTitle.titlebaixo=140;
+          },450)
+
+          setTimeout(()=>{
+            this.stageSizeTitle.titlecima=122;
+            this.stageSizeTitle.titlebaixo=142;
+          },500)
+
           setTimeout(()=>{
             this.stageSizeSombraBaixa.width=500
           }, 50);
@@ -248,8 +292,8 @@ export default{
         this.projan=!this.projan,
         this.show=!this.show
         if(this.projan){
-            this.stageSizeSombraBaixaDireita.titulocima=755
-            this.stageSizeSombraBaixaDireita.titulobaixo=710
+            this.stageSizeSombraBaixaDireita.titulocima=765
+            this.stageSizeSombraBaixaDireita.titulobaixo=690
             this.stageSizeSombraBaixaDireita.inicio=-5
             this.stageSizeSombraBaixaDireita.width=800
             this.stageSizeSombraBaixaDireita.mudança=1000
@@ -273,8 +317,8 @@ export default{
           },450)
 
           setTimeout(()=>{
-            this.stageSizeSombraBaixaDireita.titulocima=260
-            this.stageSizeSombraBaixaDireita.titulobaixo=215
+            this.stageSizeSombraBaixaDireita.titulocima=265
+            this.stageSizeSombraBaixaDireita.titulobaixo=195
           },500)
 
           setTimeout(()=>{
