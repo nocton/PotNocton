@@ -15,7 +15,7 @@ html{
   margin-right:700px;
   margin-top:200px;
   max-width:295px;
-  min-height:345px;
+  min-height:380px;
 }
 
 #info{
@@ -47,4 +47,20 @@ html{
   transition: height  0.5s;
   overflow: hidden;
   height : 0px;
+}
+
+.desaparecer{
+  transition: max-width  0.5s;
+  transition: opacity  0.4s;
+  overflow: hidden;
+  max-width : 0px;
+  opacity: 0;
+}
+
+.aparecer{
+  transition: min-width  1s;
+  transition: opacity  1s;
+  overflow: hidden;
+  min-width : 140px;
+  opacity: 5;
 }

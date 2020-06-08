@@ -33,9 +33,10 @@
 }
 
 #projetos{
-    min-height:345px;
+    height:375px;
     border-radius:15px;
     background-color:#EEEEEE;
+    flex-wrap: wrap;
 }
 
 #projan{
@@ -44,16 +45,28 @@
     border-radius:15px;
 }
 
-.semprosombra{
-    transition: min-width  0.5s;
-    overflow: hidden;
-    min-width : 300px;
+#projeto{
+    border-radius: 3px;
+    background-color: #c4c4cc;
+    min-width: 130px;
+    height: 100px;
 }
-.comprosombra{
-    transition: min-width  0.7s;
-    overflow: hidden;
-    min-width : 550px;
+
+#subtitulo{
+    font-size:13px;
 }
+
+.compro{
+    -webkit-transition: min-width 1s;
+    overflow: hidden;
+    min-width: 580px;
+  }
+.sempro{
+    -webkit-transition: min-width  1s;
+    overflow: hidden;
+    min-width : 310px;
+}
+
 
 .comprojan{
     -webkit-transition: min-width 0.7s;

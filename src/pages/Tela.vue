@@ -1,6 +1,12 @@
 <template>
+    <!-- Os css estão em arquivos separados,
+     o css das divs de posicionamento de layout está no arquivo 'css/divs.css',exemplo:'container, posi_projan' ,
+     o css dos componentes/conteúdo está no arquivo 'css/componentes.css', exemplo:'bolinha, title',
+     todo css relacionado as sombras está no arquivo 'css/sombras.css', exemplo:'sombralateraldireita, sombra_logo'
+    -->
     <div id="container">
         <!-- corte superior -->
+
         <div class="fixed-top">
             <v-stage ref="stage" :config="stageSize">
             <v-layer>
@@ -24,7 +30,26 @@
             </v-stage>
         </div>
 
-        <!-- logo e contato -->
+        <!-- Logo, contato, mostrar projetos prontos -->
+        <!--organização: 
+        div principal{
+            div bolinha (bolinha aonde se clica para mostrar os contatos)
+            div sombra da logo
+            div logo
+            div contato (div dos contatos)
+            div sombra lateral da div projetos
+            div englobamento{
+                div titulo ("Todos projetos")
+                div posicionamento dos projetos{
+                    div projetos{
+                        4 divs de conteudo (fase teste)
+                    }
+                    div complemento da sombra
+                }
+                div sombra inferior
+            }
+        }
+        -->
 
         <div v-bind:class="{pago:show, npago:!show}" class="align-center h-100 w-100 d-flex justify-center">
             <div v-if="!contato" @click="mostrar" class="position-fixed h-100 d-flex-align-items">
@@ -38,7 +63,6 @@
                     <b-button @click="mostrar" >X</b-button>
                 </div>
             </div>
-            <!--mostrar projetos completos (sombra lateral e sombrainferior incluidas, na sequência: sombralateral/(divprojetos/sombrainferior))-->
              <div id="sombralateral">
                 <v-stage ref="stage" :config="stageSizeSombra">
                     <v-layer>
@@ -80,11 +104,29 @@
                         </v-stage>
                     </div>
                 <div id="posi_projetos" class=" d-flex flex-column justify-end">
-                    <div id="projetos" v-bind:class="{compro:ver_projetos, sempro:!ver_projetos}" class=" d-flex position-fixed justify-center align-center">
-                        <b-button @click="ajustar" >
-                        <p v-if="!show" >+</p>
-                        <p v-if="show" >-</p>
-                        </b-button>
+                    <div id="projetos" v-bind:class="{compro:ver_projetos, sempro:!ver_projetos}" class=" d-flex position-fixed justify-center ">
+                        <div v-bind:class="{aparecer:adicionar1, desaparecer:!adicionar1}" class="flex-column">
+                            <projeto />
+                            <projeto />
+                            <projeto />
+                        </div>
+                        <div v-bind:class="{aparecer:adicionar2, desaparecer:!adicionar2}" class="flex-column">
+                            <projeto />
+                            <projeto />
+                            <projeto />
+                        </div>
+                        <div class="flex-column">
+                            <projeto/>
+                            <projeto/>
+                            <projeto/>
+                        </div>
+                        <div class="flex-column">
+                            <projeto/>
+                            <projeto/>
+                            <div id="projeto" @click="ajustar" class="black mt-4 mx-1 d-flex justify-content-center align-items-center">
+                                <b-icon-plus class="text-white shadow" font-size="2rem" ></b-icon-plus>
+                            </div>
+                        </div>
                     </div>
                     <div id="complementosombra" v-bind:class="{comprosombra:ver_projetos, semprosombra:!ver_projetos}">a</div>
                 </div>
@@ -108,7 +150,20 @@
                     </v-stage>
                 </div>
             </div>
-        <!-- mostrar projetos em andamento incluindo sombras, na sequencia (divprojan/sombra baixa)/sombralateral-->
+
+        <!-- mostrar projetos em andamento-->
+        <!--organização:
+        div principal(posi_projan){
+            div projan (projetos em adamento){
+                ainda sem conteúdo
+            }
+            div complemento sombra
+            div sombra inferior{
+                canvas da sombra -e- do titulo
+            }
+        }
+        -->
+        
         <div id="posi_projan" class=" d-flex flex-column align-end">
             <div id="projan" v-bind:class="{comprojan:projan, semprojan:!projan}" class="position-fixed black d-flex justify-center align-center">
                 <b-button @click="ajustar2" >
@@ -142,6 +197,9 @@
                 </v-stage>
             </div>
         </div>
+        
+        <!-- Sombra lateral direita-->
+
         <div id="sombralateraldireita">
            <v-stage ref="stage" :config="stageSizeSombraLateralDireita">
                 <v-layer>
@@ -161,7 +219,8 @@
                 }"/>
                 </v-layer>
                 </v-stage>
-        </div>      
+        </div>  
+
         <!--corte inferior-->
         <div class="fixed-bottom d-flex flex-column justify-center align-center">
             <button @click="show=!show, info=!info" id="btn">i</button>
@@ -192,9 +251,19 @@
 
 <script>
 const width = window.innerWidth
+
+import projeto from '@/components/Projetos.vue'
+import { BIconPlus } from 'bootstrap-vue'
+
 export default{
+    components:{
+        projeto,
+        BIconPlus,
+    },
     data(){
         return{
+            adicionar1:false,
+            adicionar2:false,
             show:false,
             info:false,
             contato:false,
@@ -208,7 +277,7 @@ export default{
             },
             stageSizeSombra:{
                 width: 80,
-                height: 400,
+                height: 430,
             },
             stageSizeSombraBaixa:{
                 width: 300,
@@ -245,7 +314,15 @@ export default{
       ajustar(){
         this.ver_projetos=!this.ver_projetos,
         this.show=!this.show
+
         if(this.ver_projetos){
+            setTimeout(()=>{
+            this.adicionar1=!this.adicionar1
+           },0)
+
+           setTimeout(()=>{
+            this.adicionar2=!this.adicionar2
+           },500)
 
            setTimeout(()=>{
             this.stageSizeTitle.titlecima=115;
@@ -260,6 +337,14 @@ export default{
           this.stageSizeSombraBaixa.width=550;  
         }
         else if(!this.ver_projetos){
+          setTimeout(()=>{
+            this.adicionar2=!this.adicionar2
+          },0)
+          
+
+          setTimeout(()=>{
+            this.adicionar1=!this.adicionar1
+           },500)
 
           setTimeout(()=>{
             this.stageSizeTitle.titlecima=115;

@@ -38,15 +38,15 @@
     min-height:600px;
 }
 
-.compro{
-    -webkit-transition: min-width 0.7s;
+.semprosombra{
+    transition: min-width  0.5s;
     overflow: hidden;
-    min-width: 560px;
-  }
-.sempro{
-    -webkit-transition: min-width  0.5s;
+    min-width : 300px;
+}
+.comprosombra{
+    transition: min-width  0.7s;
     overflow: hidden;
-    min-width : 310px;
+    min-width : 550px;
 }
 
 .comsombra{
