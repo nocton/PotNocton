@@ -52,14 +52,14 @@
         -->
 
         <div v-bind:class="{pago:show, npago:!show}" class="align-center h-100 w-100 d-flex justify-center">
-            <div v-if="!contato" @click="mostrar" class="position-fixed h-100 d-flex-align-items">
+            <div @click="mostrar" class="position-fixed h-100 d-flex-align-items">
                 <button id="bolinha">a</button>
             </div>
             <div id="sombra_logo" class="position-fixed">
             </div>
             <img id="img" height="270" class="position-fixed" src="@/assets/Group 8.png"/>
-            <div v-if="contato" id="posicionamento" class=" position-fixed d-flex align-top justify-center">
-                <div id="bolona" transition="scale-transition" class=" position-fixed align-center d-flex justify-center">
+            <div v-bind:class="{transiBolona:contato, semtransiBolona:!contato}" id="posicionamento" class=" position-fixed d-flex align-top justify-center">
+                <div v-if="bolona" v-bind:class="{hover:contato, nohover:!contato}" id="bolona" class=" position-fixed align-center d-flex justify-center">
                     <b-button @click="mostrar" >X</b-button>
                 </div>
             </div>
@@ -105,12 +105,12 @@
                     </div>
                 <div id="posi_projetos" class=" d-flex flex-column justify-end">
                     <div id="projetos" v-bind:class="{compro:ver_projetos, sempro:!ver_projetos}" class=" d-flex position-fixed justify-center ">
-                        <div v-bind:class="{aparecer:adicionar1, desaparecer:!adicionar1}" class="flex-column">
+                        <div  v-bind:class="{aparecer:adicionar1, desaparecer:!adicionar1}" class="flex-column">
                             <projeto />
                             <projeto />
                             <projeto />
                         </div>
-                        <div v-bind:class="{aparecer:adicionar2, desaparecer:!adicionar2}" class="flex-column">
+                        <div  v-bind:class="{aparecer:adicionar2, desaparecer:!adicionar2}" class="flex-column">
                             <projeto />
                             <projeto />
                             <projeto />
@@ -166,10 +166,13 @@
         
         <div id="posi_projan" class=" d-flex flex-column align-end">
             <div id="projan" v-bind:class="{comprojan:projan, semprojan:!projan}" class="position-fixed black d-flex justify-center align-center">
-                <b-button @click="ajustar2" >
-                    <p v-if="!show" >+</p>
-                    <p v-if="show" >-</p>
-                </b-button>
+                    <div class="flex-column">
+                        <projeto/>
+                        <projeto/>
+                        <div id="projeto2" @click="ajustar2" class="white mt-4 mx-1 d-flex justify-content-center align-items-center">
+                                <b-icon-plus class="font-weight-bold" font-size="2rem" ></b-icon-plus>
+                            </div>
+                    </div>
             </div>
             <div id="complementosombradireita"></div>
             <div id="sombrabaixadireita" v-bind:class="{comsombra:projan, semsombra:!projan}" class=" d-flex align-end">
@@ -178,9 +181,9 @@
                     <v-shape :config="{
                     sceneFunc: function(context, shape) {
                     context.beginPath();
-                    context.moveTo(stageSizeSombraBaixaDireita.inicio,0);
+                    context.moveTo(stageSizeSombraBaixaDireita.inicio,10);
                     context.lineTo(stageSizeSombraBaixaDireita.width, stageSizeSombraBaixaDireita.mudança)
-                    context.lineTo(stageSizeSombraBaixaDireita.width, 0)
+                    context.lineTo(stageSizeSombraBaixaDireita.width, 10)
                     context.closePath();
 
                     context.font = '24px Ubuntu Mono'; //Define Tamanho e fonte
@@ -221,10 +224,20 @@
                 </v-stage>
         </div>  
 
-        <!--corte inferior-->
+        <!--corte inferior e div info-->
         <div class="fixed-bottom d-flex flex-column justify-center align-center">
             <button @click="show=!show, info=!info" id="btn">i</button>
-            <div id="info" class="w-75" v-bind:class="{informar:info, ninformar:!info}"></div>
+            <div id="info" class="w-75" v-bind:class="{informar:info, ninformar:!info}">
+                <div id="dados" >
+                    <p id="texto_explicativo" class="text-white font-weight-bold ml-3" >     Texto explicativo referente a equipe. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="d-flex">
+                        <icon img="Adson_icon.jpeg"  Nome="Adson" Funct="Designer"/>
+                        <icon img="Paulo_icon.jpeg" Nome="Paulo" Funct="Backend"/>
+                        <icon img="Petrus_icon.jpeg" Nome="Petrus" Funct="Mobile"/>
+                        <icon img="Raquel_icon.jpeg" Nome="Raquel" Funct="Frontend"/>
+                    </div>
+                </div>
+            </div>
             <v-stage ref="stage" :config="stageSize">
                 <v-layer>
                 <v-shape :config="{
@@ -252,6 +265,7 @@
 <script>
 const width = window.innerWidth
 
+import icon from '@/components/Icons.vue'
 import projeto from '@/components/Projetos.vue'
 import { BIconPlus } from 'bootstrap-vue'
 
@@ -259,9 +273,13 @@ export default{
     components:{
         projeto,
         BIconPlus,
+        icon,
     },
     data(){
         return{
+            bolona:false,
+            mostrar1:false,
+            mostrar2:false,
             adicionar1:false,
             adicionar2:false,
             show:false,
@@ -308,21 +326,33 @@ export default{
     },
     methods:{
       mostrar(){
+        if(this.contato){
         this.contato=!this.contato;
         this.show=!this.show;
+
+        setTimeout(()=>{
+            this.bolona=!this.bolona
+           },400)
+        }
+        else{
+        this.contato=!this.contato;
+        this.show=!this.show;
+        this.bolona=!this.bolona
+        }
       },
       ajustar(){
         this.ver_projetos=!this.ver_projetos,
         this.show=!this.show
 
         if(this.ver_projetos){
-            setTimeout(()=>{
+         
+           setTimeout(()=>{
             this.adicionar1=!this.adicionar1
-           },0)
+           },100)
 
            setTimeout(()=>{
             this.adicionar2=!this.adicionar2
-           },500)
+           },700)
 
            setTimeout(()=>{
             this.stageSizeTitle.titlecima=115;
@@ -337,14 +367,15 @@ export default{
           this.stageSizeSombraBaixa.width=550;  
         }
         else if(!this.ver_projetos){
+
           setTimeout(()=>{
             this.adicionar2=!this.adicionar2
           },0)
-          
 
+          
           setTimeout(()=>{
             this.adicionar1=!this.adicionar1
-           },500)
+          },450)
 
           setTimeout(()=>{
             this.stageSizeTitle.titlecima=115;
@@ -390,7 +421,7 @@ export default{
         else if(!this.projan){
             
           setTimeout(()=>{
-            this.stageSizeSombraBaixaDireita.mudança=392
+            this.stageSizeSombraBaixaDireita.mudança=375
             this.stageSizeSombraBaixaDireita.inicio=-25
           },50)
 

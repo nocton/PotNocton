@@ -45,13 +45,6 @@
     border-radius:15px;
 }
 
-#projeto{
-    border-radius: 3px;
-    background-color: #c4c4cc;
-    min-width: 130px;
-    height: 100px;
-}
-
 #subtitulo{
     font-size:13px;
 }
@@ -78,3 +71,4 @@
     overflow: hidden;
     min-width : 300px;
 }
+

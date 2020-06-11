@@ -9,6 +9,7 @@ import VueKonva from 'vue-konva'
 import './css/divs.css';
 import './css/componentes.css';
 import './css/sombras.css';
+import './css/conteudo.css'
 
 Vue.use(VueKonva)
 

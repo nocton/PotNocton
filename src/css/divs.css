@@ -7,8 +7,7 @@ html{
     overflow-y:hidden !important;
   }
 #posicionamento{
-  width:400px;
-  height:500px;
+  width:300px;
 }
 
 #posi_projetos{
@@ -50,17 +49,41 @@ html{
 }
 
 .desaparecer{
-  transition: max-width  0.5s;
-  transition: opacity  0.4s;
-  overflow: hidden;
-  max-width : 0px;
+  transition: max-width  1s;
+  transition: opacity  0.7s;
+  max-width: 0px;
   opacity: 0;
 }
 
 .aparecer{
-  transition: min-width  1s;
-  transition: opacity  1s;
+  -webkit-transition: min-width  1s;
+  transition: opacity  0.7s;
   overflow: hidden;
-  min-width : 140px;
+  min-width: 120px;
   opacity: 5;
 }
+
+.transiBolona{
+  -webkit-transition: height 0.7s;
+  overflow: hidden;
+  height: 500px;
+}
+
+.semtransiBolona{
+  transition: height  0.5s;
+  overflow: hidden;
+  height : 0px;
+}
+
+.hover{
+  transition: opacity  0.7s;
+  overflow: hidden;
+  opacity : 5;
+}
+
+.nohover{
+  transition: opacity  0.7s;
+  overflow: hidden;
+  opacity : 0;
+}
+

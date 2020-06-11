@@ -1,0 +1,42 @@
+#dados{
+    margin-top:30px;
+    margin-left:20px;
+}
+
+#texto_explicativo{
+    font-size: 20px ;
+    font-family: Fredoka One;
+}
+
+#img_icon{
+    border-radius: 100px;
+    margin-right: 88px;
+}
+
+#nome{
+    margin-left: 50px;
+    font-family: Fredoka One;
+    font-size:32px;
+    line-height: 32px;
+}
+
+#function{
+    font-size:23px;
+    font-family: Fredoka One;
+    color:#244B9A;
+    line-height: 0px;
+    margin-left:75px;
+}
+
+#projeto{
+    border-radius: 3px;
+    background-color: #c4c4cc;
+    min-width: 130px;
+    height: 100px;
+}
+
+#projeto2{
+    min-height: 90px;
+    border-radius:3px;
+    margin-bottom:15px;
+}
