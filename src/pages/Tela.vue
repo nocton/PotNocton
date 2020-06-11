@@ -3,6 +3,7 @@
      o css das divs de posicionamento de layout está no arquivo 'css/divs.css',exemplo:'container, posi_projan' ,
      o css dos componentes/conteúdo está no arquivo 'css/componentes.css', exemplo:'bolinha, title',
      todo css relacionado as sombras está no arquivo 'css/sombras.css', exemplo:'sombralateraldireita, sombra_logo'
+     todo css relacionado ao conteudo está no arquivo 'css/conteudo.css', exemplo:'dados, img_icon'
     -->
     <div id="container">
         <!-- corte superior -->
