@@ -85,7 +85,7 @@
                 </v-stage>
             </div>
             <div>
-                <div id="title" class=" position-fixed">
+                <div id="title" class="position-fixed">
                           <v-stage ref="stage" :config="stageSizeTitle">
                             <v-layer>
                                 <v-shape :config="{
@@ -104,26 +104,34 @@
                             </v-layer>
                         </v-stage>
                     </div>
+                
+                <!-- Projetos -->
                 <div id="posi_projetos" class=" d-flex flex-column justify-end">
-                    <div id="projetos" v-bind:class="{compro:ver_projetos, sempro:!ver_projetos}" class=" d-flex position-fixed justify-center ">
-                        <div  v-bind:class="{aparecer:adicionar1, desaparecer:!adicionar1}" class="flex-column">
+                    <!-- Container -->
+                    <div id="projetos" v-bind:class="{compro:ver_projetos, sempro:!ver_projetos}" class="d-flex position-fixed justify-content-end pr-4">
+                        <!-- Coluna disnâmica de projetos -->
+                        <div v-bind:class="{aparecer:adicionar1, desaparecer:!adicionar1}" class="flex-column">
                             <projeto />
                             <projeto />
                             <projeto />
                         </div>
+                        <!-- Coluna dinâmica de projetos -->
                         <div  v-bind:class="{aparecer:adicionar2, desaparecer:!adicionar2}" class="flex-column">
                             <projeto />
                             <projeto />
                             <projeto />
                         </div>
+                        <!-- Coluna fixa de projetos -->
                         <div class="flex-column">
                             <projeto/>
                             <projeto/>
                             <projeto/>
                         </div>
+                        <!-- Coluna fixa de projetos -->
                         <div class="flex-column">
                             <projeto/>
                             <projeto/>
+                            <!-- Projeto que aumenta div -->
                             <div id="projeto" @click="ajustar" class="black mt-4 mx-1 d-flex justify-content-center align-items-center">
                                 <b-icon-plus class="text-white shadow" font-size="2rem" ></b-icon-plus>
                             </div>
@@ -347,62 +355,70 @@ export default{
 
         if(this.ver_projetos){
          
-           setTimeout(()=>{
-            this.adicionar1=!this.adicionar1
-           },100)
-
+            //  Adicionar colunas de projetos
            setTimeout(()=>{
             this.adicionar2=!this.adicionar2
-           },700)
+           },300)
 
            setTimeout(()=>{
-            this.stageSizeTitle.titlecima=115;
-            this.stageSizeTitle.titlebaixo=140;
-          },250)
+            this.adicionar1=!this.adicionar1
+           },800)
 
-          setTimeout(()=>{
-            this.stageSizeTitle.titlecima=110;
-            this.stageSizeTitle.titlebaixo=135;
-          },300)
 
-          this.stageSizeSombraBaixa.width=550;  
+            // Sobre título
+            setTimeout(()=>{
+                this.stageSizeTitle.titlecima=115;
+                this.stageSizeTitle.titlebaixo=140;
+            },250)
+
+            setTimeout(()=>{
+                this.stageSizeTitle.titlecima=110;
+                this.stageSizeTitle.titlebaixo=135;
+            },300)
+
+            // Sombras
+            this.stageSizeSombraBaixa.width=550;  
         }
         else if(!this.ver_projetos){
 
-          setTimeout(()=>{
-            this.adicionar2=!this.adicionar2
-          },0)
-
-          
-          setTimeout(()=>{
+        //   Remover colunas de projetos
+            setTimeout(()=>{
             this.adicionar1=!this.adicionar1
-          },450)
+            }, 100)
+            
+            setTimeout(()=>{
+            this.adicionar2=!this.adicionar2
+            },250)
 
-          setTimeout(()=>{
+
+            // Desce título
+            setTimeout(()=>{
             this.stageSizeTitle.titlecima=115;
             this.stageSizeTitle.titlebaixo=140;
-          },450)
+            },450)
 
-          setTimeout(()=>{
+            setTimeout(()=>{
             this.stageSizeTitle.titlecima=122;
             this.stageSizeTitle.titlebaixo=142;
-          },500)
+            },500)
 
-          setTimeout(()=>{
+
+            // Sombras
+            setTimeout(()=>{
             this.stageSizeSombraBaixa.width=500
-          }, 50);
-           setTimeout(()=>{
+            }, 50);
+            setTimeout(()=>{
             this.stageSizeSombraBaixa.width=450
-          }, 80);
-           setTimeout(()=>{
+            }, 80);
+            setTimeout(()=>{
             this.stageSizeSombraBaixa.width=400
-          }, 120);
-           setTimeout(()=>{
+            }, 120);
+            setTimeout(()=>{
             this.stageSizeSombraBaixa.width=350
-          }, 200);
-          setTimeout(()=>{
+            }, 200);
+            setTimeout(()=>{
             this.stageSizeSombraBaixa.width=300
-          }, 300);
+            }, 300);
         }
       },
       ajustar2(){
@@ -448,3 +464,7 @@ export default{
     }
 } 
 </script>
+
+<style scoped>
+
+</style>
