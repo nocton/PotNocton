@@ -54,14 +54,23 @@
 
         <div v-bind:class="{pago:show, npago:!show}" class="align-center h-100 w-100 d-flex justify-center">
             <div @click="mostrar" class="position-fixed h-100 d-flex-align-items">
-                <button id="bolinha">a</button>
+                <button id="bolinha">
+                <font-awesome-icon icon="phone-alt" class="pt-2" id="phone_button"/>
+                <font-awesome-icon icon="envelope" class="mb-2" id="envelope_button"/>
+                </button>
             </div>
             <div id="sombra_logo" class="position-fixed">
             </div>
             <img id="img" height="270" class="position-fixed" src="@/assets/Group 8.png"/>
             <div v-bind:class="{transiBolona:contato, semtransiBolona:!contato}" id="posicionamento" class=" position-fixed d-flex align-top justify-center">
-                <div v-if="bolona" v-bind:class="{hover:contato, nohover:!contato}" id="bolona" class=" position-fixed align-center d-flex justify-center">
-                    <b-button @click="mostrar" >X</b-button>
+                <div v-if="bolona" v-bind:class="{hover:contato, nohover:!contato}" id="bolona" class=" position-fixed align-center d-flex justify-center flex-column">
+                    <font-awesome-icon icon="phone-alt" id="phone"/>
+                    <p id="contato_text" class="pb-1">Contato</p>
+                    <p id="phone_number" class="mb-0">55 83 987745514</p>
+                    <font-awesome-icon icon="envelope" id="envelope"/>
+                    <p id="email_text" >Email</p>
+                    <p id="email_contato" >noctongroup@gmail.com</p>
+                    <b-button class="bg-transparent border-0" @click="mostrar" >X</b-button>
                 </div>
             </div>
              <div id="sombralateral">
@@ -108,31 +117,40 @@
                 <!-- Projetos -->
                 <div id="posi_projetos" class=" d-flex flex-column justify-end">
                     <!-- Container -->
-                    <div id="projetos" v-bind:class="{compro:ver_projetos, sempro:!ver_projetos}" class="d-flex position-fixed justify-content-end pr-4">
+                    <div id="projetos" v-bind:class="{comproapenas3:ver_projetos && !projetos[8],compro:ver_projetos && projetos[8], sempro:!ver_projetos}" class="d-flex position-fixed justify-content-end pr-4">
                         <!-- Coluna disnâmica de projetos -->
-                        <div v-bind:class="{aparecer:adicionar1, desaparecer:!adicionar1}" class="flex-column">
-                            <projeto />
-                            <projeto />
-                            <projeto />
+                        
+                        <div v-if="projetos[8]" v-bind:class="{aparecer:adicionar1, desaparecer:!adicionar1}">
+                            <projeto :url="projetos[8].url" :name="projetos[8].name"/>
+                            <projeto v-if="projetos[9]" :url="projetos[9].url" :name="projetos[9].name"/>
+                            <projeto v-if="projetos[10]" :url="projetos[10].url" :name="projetos[10].name"/>
                         </div>
-                        <!-- Coluna dinâmica de projetos -->
-                        <div  v-bind:class="{aparecer:adicionar2, desaparecer:!adicionar2}" class="flex-column">
-                            <projeto />
-                            <projeto />
-                            <projeto />
+
+                        <div v-if="projetos[6]" v-bind:class="{aparecer:adicionar1, desaparecer:!adicionar1}">
+                            <projeto :url="projetos[5].url" :name="projetos[5].name"/>
+                            <projeto :url="projetos[6].url" :name="projetos[6].name"/>
+                            <projeto v-if="projetos[7]" :url="projetos[7].url" :name="projetos[7].name"/>
+                        </div>
+
+                        <!-- Coluna fixa de projetos -->
+                        <div v-if="projetos[6]" class="d-flex flex-column">
+                            <projeto :url="projetos[2].url" :name="projetos[2].name"/>
+                            <projeto :url="projetos[3].url" :name="projetos[3].name"/>
+                            <projeto :url="projetos[4].url" :name="projetos[4].name"/>
+                        </div>
+
+                        <div v-if="!projetos[6] && projetos[3]">
+                            <projeto :url="projetos[3].url" :name="projetos[3].name"/>
+                            <projeto v-if="projetos[4]" :url="projetos[4].url" :name="projetos[4].name"/>
+                            <projeto v-if="projetos[5]" :url="projetos[5].url" :name="projetos[5].name"/>
                         </div>
                         <!-- Coluna fixa de projetos -->
                         <div class="flex-column">
-                            <projeto/>
-                            <projeto/>
-                            <projeto/>
-                        </div>
-                        <!-- Coluna fixa de projetos -->
-                        <div class="flex-column">
-                            <projeto/>
-                            <projeto/>
+                            <projeto :url="projetos[0].url" :name="projetos[0].name" img="Checaqui.jpeg" />
+                            <projeto :url="projetos[1].url" :name="projetos[1].name" img="SeuChefe.jpeg" />
+                            <projeto v-if="!projetos[7] && projetos[2]" :url="projetos[2].url" :name="projetos[2].name"/> 
                             <!-- Projeto que aumenta div -->
-                            <div id="projeto" @click="ajustar" class="black mt-4 mx-1 d-flex justify-content-center align-items-center">
+                            <div v-if="projetos[6]"  id="projeto" v-on:click="ajustar" class="black mt-4 mx-1 d-flex justify-content-center align-items-center">
                                 <b-icon-plus class="text-white shadow" font-size="2rem" ></b-icon-plus>
                             </div>
                         </div>
@@ -278,6 +296,8 @@ import icon from '@/components/Icons.vue'
 import projeto from '@/components/Projetos.vue'
 import { BIconPlus } from 'bootstrap-vue'
 
+import {get_nocton_projects} from '@/services/api';
+
 export default{
     components:{
         projeto,
@@ -296,6 +316,7 @@ export default{
             contato:false,
             ver_projetos:false,
             projan:false,
+            projetos:{},
             stageSize: {
                 div: 1336/width,
                 divi: width/1336,
@@ -307,7 +328,7 @@ export default{
                 height: 430,
             },
             stageSizeSombraBaixa:{
-                width: 300,
+                width: 170,
                 height: 60,
             },
             stageSizeSombraBaixaDireita:{
@@ -377,7 +398,11 @@ export default{
             },300)
 
             // Sombras
-            this.stageSizeSombraBaixa.width=550;  
+            if(this.projetos[8]){
+            this.stageSizeSombraBaixa.width=550;}
+            else{
+                this.stageSizeSombraBaixa.width=450
+            }  
         }
         else if(!this.ver_projetos){
 
@@ -417,7 +442,7 @@ export default{
             this.stageSizeSombraBaixa.width=350
             }, 200);
             setTimeout(()=>{
-            this.stageSizeSombraBaixa.width=300
+            this.stageSizeSombraBaixa.width=170
             }, 300);
         }
       },
@@ -454,14 +479,26 @@ export default{
             this.stageSizeSombraBaixaDireita.titulobaixo=195
           },500)
 
+         setTimeout(()=>{
+          this.stageSizeSombraLateralDireita.mudançax=50
+          this.stageSizeSombraLateralDireita.mudançay=600
+          this.stageSizeSombraLateralDireita.mudançaz=580 
+          },200)
+
           setTimeout(()=>{
           this.stageSizeSombraLateralDireita.mudançax=50
           this.stageSizeSombraLateralDireita.mudançay=500
-          this.stageSizeSombraLateralDireita.mudançaz=480 
-          },250)
+          this.stageSizeSombraLateralDireita.mudançaz=479 
+          },300)
         }
       }
-    }
+    },
+    
+    mounted: async function () {
+    const formated = await get_nocton_projects();
+    this.projetos = formated
+    console.log(this.projetos[0]);
+  }
 } 
 </script>
 

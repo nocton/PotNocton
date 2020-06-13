@@ -6,19 +6,12 @@
 
 <script>
 import Tela from './pages/Tela';
-import {get_nocton_projects} from './services/api';
 
 export default {
   name: 'App',
 
   components: {
     Tela,
-  },
-
-  mounted: async function () {
-    const formated = await get_nocton_projects();
-
-    console.log(formated);
   }
 };
 </script>

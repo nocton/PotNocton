@@ -31,7 +31,7 @@
 #projeto{
     border-radius: 3px;
     background-color: #c4c4cc;
-    min-width: 130px;
+    min-width: 140px;
     height: 100px;
 }
 
@@ -39,4 +39,57 @@
     min-height: 90px;
     border-radius:3px;
     margin-bottom:15px;
+}
+
+#phone_number{
+    font-size: 25px;
+    color:white;
+    font-family: Fredoka One;
+    line-height: 20px;
+}
+
+#contato_text{
+    font-size: 28px;
+    color:#55A990;
+    font-family: Fredoka One;
+    line-height: 15px;
+}
+
+#email_text{
+    font-size: 28px;
+    color:#2758B9;
+    font-family: Fredoka One;
+    line-height: 15px;
+}
+
+#phone{
+    color:#55A990;
+    height: 60px;
+    width: 30px;
+}
+
+#envelope{
+    color:#2758B9;
+    height: 60px;
+    width: 30px;
+}
+
+#email_contato{
+    line-height: 10px;
+    color:white;
+    font-size: 17px;
+    font-family: Fredoka One;
+}
+
+#phone_button{
+    color:#55A990;
+    height: 40px;
+    width: 25px;
+}
+
+#envelope_button{
+    color:#2758B9;
+    height: 40px;
+    width: 28px;
+    -webkit-transform: rotate(20deg);
 }

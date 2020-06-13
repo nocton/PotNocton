@@ -57,14 +57,19 @@
 }
 
 .compro{
-    -webkit-transition: min-width 1s;
+    -webkit-transition: min-width 0.5s;
     overflow: hidden;
     min-width: 580px;
   }
-.sempro{
-    -webkit-transition: min-width  1s;
+.comproapenas3{
+    -webkit-transition: min-width 0.5s;
     overflow: hidden;
-    min-width : 310px;
+    min-width: 460px;  
+}
+.sempro{
+    -webkit-transition: min-width  0.6s;
+    overflow: hidden;
+    min-width : 180px;
 }
 
 
