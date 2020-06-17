@@ -31,14 +31,14 @@
 #projeto{
     border-radius: 3px;
     background-color: #c4c4cc;
-    min-width: 140px;
-    height: 100px;
+    min-width: 130px;
 }
 
 #projeto2{
-    min-height: 90px;
+    min-width: 140px;
     border-radius:3px;
     margin-bottom:15px;
+    min-height: 78px;
 }
 
 #phone_number{
@@ -92,4 +92,16 @@
     height: 40px;
     width: 28px;
     -webkit-transform: rotate(20deg);
+}
+
+.mostrarsub{
+    transition: height  0.5s;
+    overflow: hidden;
+    height:100px;
+}
+
+.escondersub{
+    transition: height  0.5s;
+    overflow: hidden;
+    height:78px;
 }

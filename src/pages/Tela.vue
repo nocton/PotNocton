@@ -61,15 +61,15 @@
             </div>
             <div id="sombra_logo" class="position-fixed">
             </div>
-            <img id="img" height="270" class="position-fixed" src="@/assets/Group 8.png"/>
-            <div v-bind:class="{transiBolona:contato, semtransiBolona:!contato}" id="posicionamento" class=" position-fixed d-flex align-top justify-center">
+            <img id="img" height="270" class="position-fixed" src="@/assets/Group 67.svg"/>
+            <div v-bind:class="{transiBolona:contato, semtransiBolona:!contato}" id="posicionamento" class=" position-fixed d-flex fixed-top align-center">
                 <div v-if="bolona" v-bind:class="{hover:contato, nohover:!contato}" id="bolona" class=" position-fixed align-center d-flex justify-center flex-column">
                     <font-awesome-icon icon="phone-alt" id="phone"/>
                     <p id="contato_text" class="pb-1">Contato</p>
                     <p id="phone_number" class="mb-0">55 83 987745514</p>
                     <font-awesome-icon icon="envelope" id="envelope"/>
                     <p id="email_text" >Email</p>
-                    <p id="email_contato" >noctongroup@gmail.com</p>
+                    <p id="email_contato" >contato@nocton.tech</p>
                     <b-button class="bg-transparent border-0" @click="mostrar" >X</b-button>
                 </div>
             </div>
@@ -192,13 +192,21 @@
         -->
         
         <div id="posi_projan" class=" d-flex flex-column align-end">
-            <div id="projan" v-bind:class="{comprojan:projan, semprojan:!projan}" class="position-fixed black d-flex justify-center align-center">
-                    <div class="flex-column">
+            <div id="projan" v-bind:class="{comprojan:projan, semprojan:!projan}" class="position-fixed black d-flex justify-center align-top">
+                    <div v-if="projan" class="d-flex">
                         <projeto/>
-                        <projeto/>
+                        <projeto />
                         <div id="projeto2" @click="ajustar2" class="white mt-4 mx-1 d-flex justify-content-center align-items-center">
                                 <b-icon-plus class="font-weight-bold" font-size="2rem" ></b-icon-plus>
-                            </div>
+                         </div>
+                    </div>
+                    <div v-if="!projan" class="flex-column">
+                        <projeto name="Tahan"/>
+                        <!--
+                        <div id="projeto2" @click="ajustar2" class="white mt-4 mx-1 d-flex justify-content-center align-items-center">
+                                <b-icon-plus class="font-weight-bold" font-size="2rem" ></b-icon-plus>
+                        </div>
+                        -->
                     </div>
             </div>
             <div id="complementosombradireita"></div>
@@ -237,7 +245,7 @@
                     sceneFunc: function(context, shape) {
                     context.beginPath();
                     context.moveTo(0, 6);
-                    context.lineTo(40,40);
+                    context.lineTo(70,40);
                     context.lineTo(stageSizeSombraLateralDireita.mudançax,stageSizeSombraLateralDireita.mudançay);
                     context.lineTo(0,stageSizeSombraLateralDireita.mudançaz);
 
@@ -325,26 +333,26 @@ export default{
             },
             stageSizeSombra:{
                 width: 80,
-                height: 430,
+                height: 450,
             },
             stageSizeSombraBaixa:{
                 width: 170,
-                height: 60,
+                height: 90,
             },
             stageSizeSombraBaixaDireita:{
                 width: 300,
                 height: 340,
-                mudança:155,
-                inicio:-25,
+                mudança:140,
+                inicio:120,
                 titulocima:265,
                 titulobaixo:195,
             },
             stageSizeSombraLateralDireita:{
-                width: 50,
+                width: 80,
                 height:600,
-                mudançax:50,
-                mudançay:500,
-                mudançaz:480,
+                mudançax:80,
+                mudançay:520,
+                mudançaz:465,
             },
             stageSizeTitle:{
                 titlecima:122,
@@ -452,7 +460,7 @@ export default{
         if(this.projan){
             this.stageSizeSombraBaixaDireita.titulocima=765
             this.stageSizeSombraBaixaDireita.titulobaixo=690
-            this.stageSizeSombraBaixaDireita.inicio=-5
+            this.stageSizeSombraBaixaDireita.inicio=0
             this.stageSizeSombraBaixaDireita.width=800
             this.stageSizeSombraBaixaDireita.mudança=1000
 
@@ -463,9 +471,9 @@ export default{
         else if(!this.projan){
             
           setTimeout(()=>{
-            this.stageSizeSombraBaixaDireita.mudança=375
-            this.stageSizeSombraBaixaDireita.inicio=-25
-          },50)
+            this.stageSizeSombraBaixaDireita.mudança=500
+            this.stageSizeSombraBaixaDireita.inicio=120
+          },0)
 
           
 
@@ -480,15 +488,15 @@ export default{
           },500)
 
          setTimeout(()=>{
-          this.stageSizeSombraLateralDireita.mudançax=50
+          this.stageSizeSombraLateralDireita.mudançax=90
           this.stageSizeSombraLateralDireita.mudançay=600
-          this.stageSizeSombraLateralDireita.mudançaz=580 
-          },200)
+          this.stageSizeSombraLateralDireita.mudançaz=565 
+          },250)
 
           setTimeout(()=>{
-          this.stageSizeSombraLateralDireita.mudançax=50
-          this.stageSizeSombraLateralDireita.mudançay=500
-          this.stageSizeSombraLateralDireita.mudançaz=479 
+          this.stageSizeSombraLateralDireita.mudançax=80
+          this.stageSizeSombraLateralDireita.mudançay=520
+          this.stageSizeSombraLateralDireita.mudançaz=465 
           },300)
         }
       }

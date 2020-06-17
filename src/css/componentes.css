@@ -81,6 +81,6 @@
 .semprojan{
     transition: min-width  0.5s;
     overflow: hidden;
-    min-width : 300px;
+    min-width : 180px;
 }
 

@@ -8,10 +8,11 @@ html{
   }
 #posicionamento{
   width:300px;
+  margin-left: 40%;
 }
 
 #posi_projetos{
-  margin-top:200px;
+  margin-top:115%;
   max-width:295px;
   min-height:380px;
 }
