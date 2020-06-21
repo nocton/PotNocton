@@ -1,16 +1,16 @@
 #sombra_logo{
-    margin-top:150px;
+    margin-top:12%;
     min-width: 240px;
-    min-height: 300px;
+    min-height: 50%;
     background-color:rgb(0,0,0,0.2);
 }
 
 #complementosombra{
-    background-color:rgb(0,0,0,0.3);
+    background-color:rgb(0,0,0,0);
 }
 
 #complementosombradireita{
-    background-color:rgb(0,0,0,0.4);
+    background-color:rgb(0,0,0,0);
     margin-top: 400px;
     min-height:60px;
     min-width: 100px;

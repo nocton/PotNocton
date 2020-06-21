@@ -3,6 +3,11 @@
     margin-left:20px;
 }
 
+#img_img{
+    width: 140px;
+}
+
+
 #texto_explicativo{
     font-size: 20px ;
     font-family: Fredoka One;
@@ -10,7 +15,7 @@
 
 #img_icon{
     border-radius: 100px;
-    margin-right: 88px;
+    
 }
 
 #nome{

@@ -16,8 +16,8 @@
                     context.beginPath();
                     context.moveTo(0, 0);
                     context.lineTo(stageSize.width, 0);
-                    context.lineTo(stageSize.width, 36)
-                    context.lineTo(80,36*stageSize.div);
+                    context.lineTo(stageSize.width, stageSize.height)
+                    context.lineTo(80,stageSize.height*stageSize.div);
                     context.lineTo(0,0);
                     context.closePath();
 
@@ -78,11 +78,11 @@
                     <v-layer>
                     <v-shape :config="{
                     sceneFunc: function(context, shape) {
-                        context.beginPath();
-                        context.moveTo(80, 0);
-                        context.lineTo(0, 60);
-                        context.lineTo(80, 100000);
-                        context.closePath();
+                        // context.beginPath();
+                        // context.moveTo(80, 0);
+                        // context.lineTo(0, 60);
+                        // context.lineTo(80, 100000);
+                        // context.closePath();
 
                         context.fillStrokeShape(shape);
                     },
@@ -94,7 +94,7 @@
                 </v-stage>
             </div>
             <div>
-                <div id="title" class="position-fixed">
+                <!--
                           <v-stage ref="stage" :config="stageSizeTitle">
                             <v-layer>
                                 <v-shape :config="{
@@ -112,12 +112,16 @@
                             }"/>
                             </v-layer>
                         </v-stage>
-                    </div>
+                        -->
                 
                 <!-- Projetos -->
                 <div id="posi_projetos" class=" d-flex flex-column justify-end">
                     <!-- Container -->
-                    <div id="projetos" v-bind:class="{comproapenas3:ver_projetos && !projetos[8],compro:ver_projetos && projetos[8], sempro:!ver_projetos}" class="d-flex position-fixed justify-content-end pr-4">
+                    <div id="title">
+                        <p id="title11">Todos</p>
+                        <p id="title11" >Projetos</p>
+                    </div>
+                    <div id="projetos" v-bind:class="{comproapenas3:ver_projetos && !projetos[8],compro:ver_projetos && projetos[8], sempro:!ver_projetos}" class="d-flex justify-center ">
                         <!-- Coluna disnâmica de projetos -->
                         
                         <div v-if="projetos[8]" v-bind:class="{aparecer:adicionar1, desaparecer:!adicionar1}">
@@ -155,17 +159,17 @@
                             </div>
                         </div>
                     </div>
-                    <div id="complementosombra" v-bind:class="{comprosombra:ver_projetos, semprosombra:!ver_projetos}">a</div>
+                    <div id="complementosombra" v-bind:class="{comprosombra:ver_projetos, semprosombra:!ver_projetos}"></div>
                 </div>
                 <div id="sombrabaixa" v-bind:class="{comprosombra:ver_projetos, semprosombra:!ver_projetos}">
                     <v-stage ref="stage" :config="stageSizeSombraBaixa">
                         <v-layer>
                         <v-shape :config="{
                         sceneFunc: function(context, shape) {
-                            context.beginPath();
-                            context.moveTo(stageSizeSombraBaixa.width, 0);
-                            context.lineTo(0, 200);
-                            context.lineTo(0, 0);
+                            // context.beginPath();
+                            // context.moveTo(stageSizeSombraBaixa.width, 0);
+                            // context.lineTo(0, 200);
+                            // context.lineTo(0, 0);
                         
                             context.fillStrokeShape(shape);
                         },
@@ -215,16 +219,16 @@
                 <v-layer>
                     <v-shape :config="{
                     sceneFunc: function(context, shape) {
-                    context.beginPath();
-                    context.moveTo(stageSizeSombraBaixaDireita.inicio,10);
-                    context.lineTo(stageSizeSombraBaixaDireita.width, stageSizeSombraBaixaDireita.mudança)
-                    context.lineTo(stageSizeSombraBaixaDireita.width, 10)
-                    context.closePath();
+                    // context.beginPath();
+                    // context.moveTo(stageSizeSombraBaixaDireita.inicio,10);
+                    // context.lineTo(stageSizeSombraBaixaDireita.width, stageSizeSombraBaixaDireita.mudança)
+                    // context.lineTo(stageSizeSombraBaixaDireita.width, 10)
+                    // context.closePath();
 
                     context.font = '24px Ubuntu Mono'; //Define Tamanho e fonte
                     context.fillStyle = 'white'; //Define a cor
-                    context.fillText('Em', stageSizeSombraBaixaDireita.titulocima, 15);
-                    context.fillText('processo.',stageSizeSombraBaixaDireita.titulobaixo,35)
+                    context.fillText('Em', stageSizeSombraBaixaDireita.titulocima, stageSizeSombraBaixaDireita.titulocimay);
+                    context.fillText('processo.',stageSizeSombraBaixaDireita.titulobaixo,stageSizeSombraBaixaDireita.titulobaixoy)
                     context.fillStrokeShape(shape);
                     },
                     fill: 'rgb(0,0,0,0.4)',
@@ -243,11 +247,11 @@
                 <v-layer>
                     <v-shape :config="{
                     sceneFunc: function(context, shape) {
-                    context.beginPath();
-                    context.moveTo(0, 6);
-                    context.lineTo(70,40);
-                    context.lineTo(stageSizeSombraLateralDireita.mudançax,stageSizeSombraLateralDireita.mudançay);
-                    context.lineTo(0,stageSizeSombraLateralDireita.mudançaz);
+                    // context.beginPath();
+                    // context.moveTo(0, 6);
+                    // context.lineTo(70,40);
+                    // context.lineTo(stageSizeSombraLateralDireita.mudançax,stageSizeSombraLateralDireita.mudançay);
+                    // context.lineTo(0,stageSizeSombraLateralDireita.mudançaz);
 
                     context.fillStrokeShape(shape);
                     },
@@ -265,7 +269,7 @@
             <div id="info" class="w-75" v-bind:class="{informar:info, ninformar:!info}">
                 <div id="dados" >
                     <p id="texto_explicativo" class="text-white font-weight-bold ml-3" >     Texto explicativo referente a equipe. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <div class="d-flex">
+                    <div class="d-flex justify-center">
                         <icon img="Adson_icon.jpeg"  Nome="Adson" Funct="Designer"/>
                         <icon img="Paulo_icon.jpeg" Nome="Paulo" Funct="Backend"/>
                         <icon img="Petrus_icon.jpeg" Nome="Petrus" Funct="Mobile"/>
@@ -278,8 +282,8 @@
                 <v-shape :config="{
                 sceneFunc: function(context, shape) {
                     context.beginPath();
-                    context.moveTo(0, 36);
-                    context.lineTo(stageSize.width, 36);
+                    context.moveTo(0, stageSize.height);
+                    context.lineTo(stageSize.width, stageSize.height);
                     context.lineTo((stageSize.width-((80*stageSize.divi)-2)),0);
                     context.lineTo(0,0);
                     context.closePath();
@@ -299,6 +303,7 @@
 
 <script>
 const width = window.innerWidth
+const height = window.innerHeight
 
 import icon from '@/components/Icons.vue'
 import projeto from '@/components/Projetos.vue'
@@ -329,7 +334,7 @@ export default{
                 div: 1336/width,
                 divi: width/1336,
                 width: width,
-                height: 36
+                height: ((((height-657)/194)*10)+37)
             },
             stageSizeSombra:{
                 width: 80,
@@ -345,7 +350,9 @@ export default{
                 mudança:140,
                 inicio:120,
                 titulocima:265,
+                titulocimay:((((height-657)/73)*55)+15),
                 titulobaixo:195,
+                titulobaixoy:((((height-657)/73)*55)+35),
             },
             stageSizeSombraLateralDireita:{
                 width: 80,
@@ -354,13 +361,16 @@ export default{
                 mudançay:520,
                 mudançaz:465,
             },
-            stageSizeTitle:{
-                titlecima:122,
-                titlebaixo:142,
-                height:395,
-                width:150
-            }
+            // stageSizeTitle:{
+            //     titlecima:170,
+            //     titlebaixo:190,
+            //     height:3000,
+            //     width:150
+            // }
         }
+    },
+    created(){
+        alert(height)
     },
     methods:{
       mostrar(){
