@@ -8,7 +8,14 @@ html{
   }
 #posicionamento{
   width:300px;
-  margin-left: 40%;
+  margin-left: 25%;
+}
+
+#posi_projan{
+  margin-top:20%;
+  margin-left:0%;
+  min-width:300px;
+  min-height:60%;
 }
 
 #posi_projetos{
@@ -18,6 +25,7 @@ html{
 }
 
 #info{
+  min-width: 400px;
   background-color:#151515;
   border-top-left-radius:48px;
   border-top-right-radius:48px;
@@ -36,7 +44,7 @@ html{
 .informar{
   -webkit-transition: height 0.7s;
   overflow: hidden;
-  height: 470px;
+  height: 500px;
 }
 .ninformar{
   transition: height  0.5s;
@@ -83,26 +91,47 @@ html{
   opacity : 0;
 }
 
-@media only screen and (min-width: 480px)  {
+@media only screen and (min-width: 600px)  {
+  #info{
+    min-width: 600px;
+    background-color:#151515;
+    border-top-left-radius:48px;
+    border-top-right-radius:48px;
+  }
+
+  .informar{
+    -webkit-transition: height 0.7s;
+    overflow: hidden;
+    height: 400px;
+  }
   #posi_projan{
-    margin-top:20%;
-    margin-left:30%;
+    margin-top:10%;
+    margin-left:20%;
     min-width:300px;
     min-height:60%;
   }
 }
 
-@media only screen and (max-height: 480px)  {
+
+@media only screen and (min-width: 900px)  {
   #posi_projan{
-    margin-top:25%;
-    margin-left:30%;
+    margin-top:0%;
+    margin-left:40%;
     min-width:300px;
     min-height:60%;
   }
-  
+  #posicionamento{
+    width:300px;
+    margin-left: 40%;
+  }
+  .informar{
+    -webkit-transition: height 0.7s;
+    overflow: hidden;
+    height: 350px;
+  }
 }
 
-@media only screen and (min-width: 1200px)  {
+@media only screen and (min-width:1200px){
   #posi_projan{
     margin-top:0%;
     margin-left:60%;

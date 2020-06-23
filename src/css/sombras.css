@@ -1,20 +1,15 @@
 #sombra_logo{
-    margin-top:12%;
-    min-width: 240px;
+    margin-top:25%;
+    min-width: 180px;
     min-height: 50%;
-    background-color:rgb(0,0,0,0.2);
+    background-color:rgb(0,0,0,0);
 }
 
 #complementosombra{
     background-color:rgb(0,0,0,0);
 }
 
-#complementosombradireita{
-    background-color:rgb(0,0,0,0);
-    margin-top: 100%;
-    min-height:60px;
-    min-width: 100px;
-}
+
 
 #sombralateral{
     margin-top:15%;
@@ -28,8 +23,8 @@
 }
 
 #sombrabaixadireita{
-    max-width: 300px;
-    margin-bottom: 20%;
+    max-width: 400px;
+    margin-bottom: 90%;
 }
 
 #sombralateraldireita{
@@ -60,11 +55,25 @@
     min-width : 300px;
 }
 
-@media only screen and (max-height: 480px)  {
+@media only screen and (min-width: 600px){
     #complementosombradireita{
         background-color:rgb(0,0,0,0);
-        margin-top: 87%;
+        margin-top: 100%;
         min-height:60px;
         min-width: 100px;
     }
-  }
+    #sombrabaixadireita{
+        max-width: 300px;
+        margin-bottom: 20%;
+    }
+}
+
+@media only screen and (min-width: 900px)  {
+    #sombra_logo{
+        margin-top:13%;
+        min-width: 240px;
+        min-height: 50%;
+        background-color:rgb(0,0,0,0.2);
+    }
+    
+}

@@ -61,7 +61,7 @@
             </div>
             <div id="sombra_logo" class="position-fixed">
             </div>
-            <img id="img" height="270" class="position-fixed" src="@/assets/Group 67.svg"/>
+            <img id="img" class="position-fixed" src="@/assets/Group 67.svg"/>
             <div v-bind:class="{transiBolona:contato, semtransiBolona:!contato}" id="posicionamento" class=" position-fixed d-flex fixed-top align-center">
                 <div v-if="bolona" v-bind:class="{hover:contato, nohover:!contato}" id="bolona" class=" position-fixed align-center d-flex justify-center flex-column">
                     <font-awesome-icon icon="phone-alt" id="phone"/>
@@ -150,11 +150,11 @@
                         </div>
                         <!-- Coluna fixa de projetos -->
                         <div class="flex-column">
-                            <projeto :url="projetos[0].url" :name="projetos[0].name" img="Checaqui.jpeg" />
-                            <projeto :url="projetos[1].url" :name="projetos[1].name" img="SeuChefe.jpeg" />
-                            <projeto v-if="!projetos[7] && projetos[2]" :url="projetos[2].url" :name="projetos[2].name"/> 
+                            <projeto v-if="stageSize.width>500" :url="projetos[0].url" :name="projetos[0].name" img="Checaqui.jpeg" />
+                            <projeto v-if="!stageSize.width>500" :url="projetos[1].url" :name="projetos[1].name" img="SeuChefe.jpeg" />
+                            <projeto v-if="!projetos[7] && projetos[2] && !stageSize.width>500" :url="projetos[2].url" :name="projetos[2].name"/> 
                             <!-- Projeto que aumenta div -->
-                            <div v-if="projetos[6]"  id="projeto" v-on:click="ajustar" class="black mt-4 mx-1 d-flex justify-content-center align-items-center">
+                            <div v-if="projetos[6] || stageSize.width<=500 "  id="projeto1" v-on:click="ajustar" class="black mt-4 mx-1 d-flex justify-content-center align-items-center">
                                 <b-icon-plus class="text-white shadow" font-size="2rem" ></b-icon-plus>
                             </div>
                         </div>
@@ -197,20 +197,11 @@
         
         <div id="posi_projan" class=" d-flex flex-column align-end">
             <div id="projan" v-bind:class="{comprojan:projan, semprojan:!projan}" class="position-fixed black d-flex justify-center align-top">
-                    <div v-if="projan" class="d-flex">
-                        <projeto/>
-                        <projeto />
-                        <div id="projeto2" @click="ajustar2" class="white mt-4 mx-1 d-flex justify-content-center align-items-center">
-                                <b-icon-plus class="font-weight-bold" font-size="2rem" ></b-icon-plus>
-                         </div>
-                    </div>
                     <div v-if="!projan" class="flex-column">
-                        <projeto name="Tahan"/>
-                        <!--
-                        <div id="projeto2" @click="ajustar2" class="white mt-4 mx-1 d-flex justify-content-center align-items-center">
+                        <projeto v-if="stageSize.width>=501" name="Tahan"/>
+                        <div id="projeto2" v-if="stageSize.width<501" @click="ajustar2" class="white mt-4 mx-3 d-flex justify-content-center align-items-center">
                                 <b-icon-plus class="font-weight-bold" font-size="2rem" ></b-icon-plus>
                         </div>
-                        -->
                     </div>
             </div>
             <div id="complementosombradireita"></div>
@@ -264,12 +255,13 @@
         </div>  
 
         <!--corte inferior e div info-->
-        <div class="fixed-bottom d-flex flex-column justify-center align-center">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <div id="infoinfo" class="fixed-bottom d-flex flex-column justify-center align-center">
             <button @click="show=!show, info=!info" id="btn">i</button>
             <div id="info" class="w-75" v-bind:class="{informar:info, ninformar:!info}">
                 <div id="dados" >
                     <p id="texto_explicativo" class="text-white font-weight-bold ml-3" >     Texto explicativo referente a equipe. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <div class="d-flex justify-center">
+                    <div id="aloja" class="d-flex justify-center">
                         <icon img="Adson_icon.jpeg"  Nome="Adson" Funct="Designer"/>
                         <icon img="Paulo_icon.jpeg" Nome="Paulo" Funct="Backend"/>
                         <icon img="Petrus_icon.jpeg" Nome="Petrus" Funct="Mobile"/>
@@ -378,7 +370,7 @@ export default{
             this.stageSizeSombraBaixaDireita.titulocimay=((((height-657)/73)*55)+115);
             this.stageSizeSombraBaixaDireita.titulobaixoy=((((height-657)/73)*55)+130);
         }
-        alert(height)
+        alert(width)
     },
     methods:{
       mostrar(){
