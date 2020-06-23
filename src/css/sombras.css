@@ -11,7 +11,7 @@
 
 #complementosombradireita{
     background-color:rgb(0,0,0,0);
-    margin-top: 400px;
+    margin-top: 100%;
     min-height:60px;
     min-width: 100px;
 }
@@ -29,6 +29,7 @@
 
 #sombrabaixadireita{
     max-width: 300px;
+    margin-bottom: 20%;
 }
 
 #sombralateraldireita{
@@ -58,3 +59,12 @@
     overflow: hidden;
     min-width : 300px;
 }
+
+@media only screen and (max-height: 480px)  {
+    #complementosombradireita{
+        background-color:rgb(0,0,0,0);
+        margin-top: 87%;
+        min-height:60px;
+        min-width: 100px;
+    }
+  }

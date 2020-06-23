@@ -350,9 +350,9 @@ export default{
                 mudança:140,
                 inicio:120,
                 titulocima:265,
-                titulocimay:((((height-657)/73)*55)+15),
+                titulocimay:null,
                 titulobaixo:195,
-                titulobaixoy:((((height-657)/73)*55)+35),
+                titulobaixoy:null,
             },
             stageSizeSombraLateralDireita:{
                 width: 80,
@@ -370,6 +370,14 @@ export default{
         }
     },
     created(){
+        if(height<657){
+            this.stageSizeSombraBaixaDireita.titulocimay=15;
+            this.stageSizeSombraBaixaDireita.titulobaixoy=35;
+        }
+        else{
+            this.stageSizeSombraBaixaDireita.titulocimay=((((height-657)/73)*55)+115);
+            this.stageSizeSombraBaixaDireita.titulobaixoy=((((height-657)/73)*55)+130);
+        }
         alert(height)
     },
     methods:{
@@ -519,7 +527,3 @@ export default{
   }
 } 
 </script>
-
-<style scoped>
-
-</style>

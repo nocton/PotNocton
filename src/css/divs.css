@@ -23,11 +23,6 @@ html{
   border-top-right-radius:48px;
 }
 
-#posi_projan{
-  margin-left:60%;
-  min-width:300px;
-  min-height:60%;
-}
 
 .pago{
   -webkit-transition: background-color 0.5s;
@@ -88,3 +83,30 @@ html{
   opacity : 0;
 }
 
+@media only screen and (min-width: 480px)  {
+  #posi_projan{
+    margin-top:20%;
+    margin-left:30%;
+    min-width:300px;
+    min-height:60%;
+  }
+}
+
+@media only screen and (max-height: 480px)  {
+  #posi_projan{
+    margin-top:25%;
+    margin-left:30%;
+    min-width:300px;
+    min-height:60%;
+  }
+  
+}
+
+@media only screen and (min-width: 1200px)  {
+  #posi_projan{
+    margin-top:0%;
+    margin-left:60%;
+    min-width:300px;
+    min-height:60%;
+  }
+}
