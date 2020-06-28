@@ -112,7 +112,8 @@
                                 <projeto :url="projetos[1].url" :name="projetos[1].name" img="SeuChefe.jpeg" />
                             </div>
                             <div  id="projeto1" v-on:click="ajustar" class="black mt-2 mx-2 d-flex justify-content-center align-items-center">
-                                <b-icon-plus class="text-white shadow" font-size="2rem" ></b-icon-plus>
+                                <b-icon-plus v-if="!ver_projetos" class="text-white shadow" font-size="2rem" ></b-icon-plus>
+                                <h3 v-else class=" text-white mt-2" >—</h3>
                             </div>
                         </div>
                     </div>
@@ -162,7 +163,8 @@
                      <div v-if="stageSize.width<=500" class="d-flex">
                         <projeto v-if="projan" img="Tahan.jpeg" name="Tahan"/>
                         <div id="projeto2" @click="ajustar2" class="white mt-2 mx-2 d-flex justify-content-center align-items-center">
-                                <b-icon-plus class="font-weight-bold" font-size="2rem" ></b-icon-plus>
+                                <b-icon-plus v-if="!projan" class="font-weight-bold" font-size="2rem" ></b-icon-plus>
+                                <h3 v-else class=" mt-2" >—</h3>
                         </div>
                     </div>
             </div>
@@ -339,7 +341,6 @@ export default{
             this.stageSizeSombraBaixaDireita.titulocimay=15
             this.stageSizeSombraBaixaDireita.titulobaixoy=30
         }
-        alert(width)
     },
     methods:{
       mostrar_info(){
