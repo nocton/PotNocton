@@ -4,13 +4,14 @@
 }
 
 #projeto1{
-    width: 130px;
-    height: 80px;
-    border-radius: 3px;
+    min-width: 120px;
+    border-radius:3px;
+    margin-bottom:10px;
+    height: 70px;
 }
 
 #img_img{
-    width: 140px;
+    width: 120px;
 }
 
 #subtitulo{
@@ -18,26 +19,26 @@
 }
 
 #texto_explicativo{
-    margin-right: 10px;
-    font-size: 12px ;
+    margin-right: 30px;
+    font-size: 11px ;
     font-family: Fredoka One;
 }
 
 #img_icon{
     border-radius: 100px;
-    width:110px;
-    height:110px;
+    width:100px;
+    height:100px;
 }
 
 #nome{
     margin-left: 50px;
     font-family: Fredoka One;
-    font-size:20px;
+    font-size:18px;
     line-height: 10px;
 }
 
 #function{
-    font-size:15px;
+    font-size:14px;
     font-family: Fredoka One;
     color:#244B9A;
     line-height: 0px;
@@ -47,14 +48,14 @@
 #projeto{
     border-radius: 3px;
     background-color: #c4c4cc;
-    min-width: 130px;
+    max-width: 120px;
 }
 
 #projeto2{
-    min-width: 140px;
+    min-width: 100px;
     border-radius:3px;
-    margin-bottom:15px;
-    min-height: 78px;
+    margin-bottom:10px;
+    height: 70px;
 }
 
 #phone_number{
@@ -99,14 +100,14 @@
 
 #phone_button{
     color:#55A990;
-    height: 40px;
-    width: 25px;
+    height: 35px;
+    width: 20px;
 }
 
 #envelope_button{
     color:#2758B9;
-    height: 40px;
-    width: 28px;
+    height: 35px;
+    width: 23px;
     -webkit-transform: rotate(20deg);
 }
 
@@ -125,7 +126,7 @@
 .escondersub{
     transition: height  0.5s;
     overflow: hidden;
-    height:78px;
+    height:65px;
 }
 
 @media only screen and (min-width: 1400px)  {
@@ -147,7 +148,32 @@
     }
   }
 
-@media only screen and (min-width: 600px)  {
+@media only screen and (min-width: 600px)  {    
+    #projeto{
+        border-radius: 3px;
+        background-color: #c4c4cc;
+        min-width: 140px;
+    }
+    .escondersub{
+        transition: height  0.5s;
+        overflow: hidden;
+        height:78px;
+    }
+    #img_img{
+        width: 140px;
+    }
+    #phone_button{
+        color:#55A990;
+        height: 40px;
+        width: 25px;
+    }
+    
+    #envelope_button{
+        color:#2758B9;
+        height: 40px;
+        width: 28px;
+        -webkit-transform: rotate(20deg);
+    }
     #aloja{
         display: flex;
         flex-wrap: nowrap;
@@ -160,7 +186,7 @@
         height:120px;
     }
     #texto_explicativo{
-        margin-right: 10px;
+        margin-right: 30px;
         font-size: 15px ;
         font-family: Fredoka One;
     }
@@ -178,6 +204,33 @@
         color:#244B9A;
         line-height: 0px;
         margin-left:75px;
+    }
+}
+
+@media only screen and (min-width: 900px)  {
+    
+    #img_icon{
+        border-radius: 100px;
+        width:150px;
+        height:150px;
+    }
+}
+
+@media only screen and (min-width: 1400px){
+    #img_img{
+        width: 180px;
+    }
+
+    #projeto{
+        border-radius: 3px;
+        background-color: #c4c4cc;
+        min-width: 180px;
+    }
+
+    .escondersub{
+        transition: height  0.5s;
+        overflow: hidden;
+        height:100px;
     }
 }
   

@@ -1,5 +1,5 @@
 <template>
-    <div v-on:mouseover="mostrarsub" v-on:mouseout="sub=!sub" v-bind:class="{hover:hover, nohover:!hover, mostrarsub:sub, escondersub:!sub}" class="d-flex flex-column align-items-center mx-1 mt-4" id="projeto" >
+    <div v-on:mouseover="mostrarsub" v-on:mouseout="sub=!sub" v-bind:class="{hover:hover, nohover:!hover, mostrarsub:sub, escondersub:!sub}" class="d-flex flex-column align-items-center mx-1 mt-3" id="projeto" >
         <a target="_blank" :href="url" v-if="img" ><img id="img_img" :src="require('@/assets/' + img)"/></a>
         <img v-else src="https://picsum.photos/140/80?random=2"/>
         <p id="subtitulo" :href="url" class="font-weight-bold text-center mb-2">{{name}}</p>
