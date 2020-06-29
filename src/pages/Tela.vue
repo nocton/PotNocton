@@ -70,7 +70,7 @@
                     <font-awesome-icon icon="envelope" id="envelope"/>
                     <p id="email_text" >Email</p>
                     <p id="email_contato" >contato@nocton.tech</p>
-                    <b-button class="bg-transparent border-0" @click="mostrar" >X</b-button>
+                    <b-button class="bg-transparent text-white border-0" @click="mostrar" >X</b-button>
                 </div>
             </div>
             <div id="sombralateral">
@@ -225,7 +225,7 @@
             <button @click="mostrar_info" id="btn">i</button>
             <div id="info" class="w-75" v-bind:class="{informar:info, ninformar:!info}">
                 <div id="dados" >
-                    <p id="texto_explicativo" class="text-white font-weight-bold ml-3 text-justify" >TNocton é um time de desenvolvimento de software independente, formado por estudantes do Instituto Federal de Educação, Ciência e Tecnologia da Paraíba, atualmente trabalhando em projetos de freelance e de pesquisa científica focado nas tecnologias para web, mobile, hardware e servidores com Django, Node, React, React Native, Vue e Arduino. A equipe foi formada em 2020, sempre abertos a novos conhecimentos e experiências no mundo da tecnologia.</p>
+                    <p id="texto_explicativo" class="text-white font-weight-bold ml-3 text-justify" >Nocton é um time de desenvolvimento de software independente, formado por estudantes do Instituto Federal de Educação, Ciência e Tecnologia da Paraíba, atualmente trabalhando em projetos de freelance e de pesquisa científica focado nas tecnologias para web, mobile, hardware e servidores com Django, Node, React, React Native, Vue e Arduino. A equipe foi formada em 2020, sempre abertos a novos conhecimentos e experiências no mundo da tecnologia.</p>
                     <div id="aloja" class="d-flex justify-center">
                         <icon img="Adson_icon.jpeg"  Nome="Adson" Funct="Designer"/>
                         <icon img="Paulo_icon.jpeg" Nome="Paulo" Funct="Backend"/>
