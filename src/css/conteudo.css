@@ -148,7 +148,12 @@
     }
   }
 
-@media only screen and (min-width: 600px)  {    
+@media only screen and (min-width: 600px)  { 
+    .mostrarsub{
+        transition: height  0.5s;
+        overflow: hidden;
+        height:100px;
+    }   
     #projeto{
         border-radius: 3px;
         background-color: #c4c4cc;
