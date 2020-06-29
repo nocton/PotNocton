@@ -27,6 +27,7 @@
 }
 
 #sombrabaixadireita{
+    min-height: 210px;
     max-width: 400px;
     margin-bottom: 90%;
 }

@@ -19,9 +19,11 @@
 }
 
 #img{
-    -webkit-transform: rotate(20deg);
     height:190px;
 } 
+#img_w{
+    height: 250px;
+}
 
 #bolinha{
     margin-top:30%;
@@ -155,8 +157,7 @@
         border-radius:200px;
     }
     #img{
-        -webkit-transform: rotate(-6deg);
-        height:270px;
+        height:250px;
     }
   }
 

@@ -237,5 +237,12 @@
         overflow: hidden;
         height:100px;
     }
+
+    .mostrarsub{
+        transition: height  0.5s;
+        overflow: hidden;
+        height:125px;
+    }
+    
 }
   

@@ -60,7 +60,8 @@
                 </button>
             </div>
             <div id="sombra_logo" class="position-fixed"></div>
-            <img id="img" class="position-fixed" src="@/assets/Group 67.svg"/>
+            <img id="img" class="position-fixed" src="@/assets/LogoW.svg"/>
+            <img id="img" v-bind:style="stylelogo" class="position-fixed" src="@/assets/LogoB.svg"/>
             <div v-bind:class="{transiBolona:contato, semtransiBolona:!contato}" id="posicionamento" class=" position-fixed d-flex fixed-top align-center">
                 <div v-if="bolona" v-bind:class="{hover:contato, nohover:!contato}" id="bolona" class=" position-fixed align-center d-flex justify-center flex-column">
                     <font-awesome-icon icon="phone-alt" id="phone"/>
@@ -170,7 +171,7 @@
             </div>
             <div id="complementosombradireita" v-bind:class="{po:projan, pa:!projan}"></div>
             <div id="sombrabaixadireita" v-bind:class="{comsombra:projan, semsombra:!projan}" class=" d-flex align-end">
-                <v-stage ref="stage" :config="stageSizeSombraBaixaDireita">
+                <v-stage v-if="!ver_projetos" ref="stage" :config="stageSizeSombraBaixaDireita">
                 <v-layer>
                     <v-shape :config="{
                     sceneFunc: function(context, shape) {
@@ -275,6 +276,8 @@ export default{
     },
     data(){
         return{
+            logoy2:null,
+            logoy1:null,
             bolona:false,
             show:false,
             info:false,
@@ -282,6 +285,9 @@ export default{
             ver_projetos:false,
             projan:false,
             projetos:{},
+            stylelogo:{
+                clipPath: null,
+            },
             stageSize: {
                 div: 1336/width,
                 divi: width/1336,
@@ -323,6 +329,13 @@ export default{
         }
     },
     created(){
+        if(width<=1336){
+            this.stylelogo.clipPath=`polygon(0% ${((-(1245-width)/321)*7)+26}%, 0% 100%,100% 100%,100% ${(((1245-width)/321)*9)+73}%)`;
+        }
+        else if(width>=1336){
+            this.stylelogo.clipPath=`polygon(0% ${26}%, 0% 100%,100% 100%,100% ${73}%)`;
+        }
+        alert(height)
         if(width>=1400){
             this.stageSizeSombraBaixaDireita.titulocimay=310;
             this.stageSizeSombraBaixaDireita.titulobaixoy=325;
