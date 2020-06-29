@@ -101,11 +101,6 @@
                         <p id="title11" >Projetos</p>
                     </div>
                     <div id="projetos" v-bind:class="{compro:ver_projetos, sempro:!ver_projetos}" class="d-flex justify-start align-end position-fixed">
-                        <div v-if="!stageSize.width<=500" class="flex-column">
-                            <projeto v-if="stageSize.width>500" :url="projetos[0].url" :name="projetos[0].name" img="Checaqui.jpeg" />
-                            <projeto v-if="stageSize.width>500" :url="projetos[1].url" :name="projetos[1].name" img="SeuChefe.jpeg" />
-
-                        </div>
                         <div v-if="stageSize.width<=500">
                             <div v-if="ver_projetos" class="ml-1">
                                 <projeto :url="projetos[0].url" :name="projetos[0].name" img="Checaqui.jpeg" />
@@ -115,6 +110,11 @@
                                 <b-icon-plus v-if="!ver_projetos" class="text-white shadow" font-size="2rem" ></b-icon-plus>
                                 <h3 v-else class=" text-white mt-2" >—</h3>
                             </div>
+                        </div>
+                         <div v-if="!stageSize.width<=500" class="flex-column">
+                            <projeto v-if="stageSize.width>500" :url="projetos[0].url" :name="projetos[0].name" img="Checaqui.jpeg" />
+                            <projeto v-if="stageSize.width>500" :url="projetos[1].url" :name="projetos[1].name" img="SeuChefe.jpeg" />
+
                         </div>
                     </div>
                     

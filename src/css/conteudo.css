@@ -52,7 +52,7 @@
 }
 
 #projeto2{
-    min-width: 100px;
+    min-width: 115px;
     border-radius:3px;
     margin-bottom:10px;
     height: 70px;
@@ -120,7 +120,7 @@
 .mostrarsub{
     transition: height  0.5s;
     overflow: hidden;
-    height:100px;
+    height:65px;
 }
 
 .escondersub{
