@@ -335,7 +335,6 @@ export default{
         else if(width>=1336){
             this.stylelogo.clipPath=`polygon(0% ${26}%, 0% 100%,100% 100%,100% ${73}%)`;
         }
-        alert(height)
         if(width>=1400){
             this.stageSizeSombraBaixaDireita.titulocimay=310;
             this.stageSizeSombraBaixaDireita.titulobaixoy=325;
